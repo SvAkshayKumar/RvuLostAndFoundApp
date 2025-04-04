@@ -238,7 +238,7 @@ export default function AuthScreen() {
 
   const handleOpenTerms = async () => {
     try {
-      const url = 'https:///github.com/svakshaykumar';
+      const url = 'https://svakshaykumar.github.io/LostAndFound-TandC/';
       const supported = await Linking.canOpenURL(url);
 
       if (supported) {
