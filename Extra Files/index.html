@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RV University Lost & Found Application</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <style>
+        :root {
+            --primary: #4a90e2;
+            --text-dark: #1a202c;
+            --text-muted: #4a5568;
+            --text-light: #718096;
+            --bg-light: #f8fafc;
+            --bg-white: #ffffff;
+            --shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+            --border: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-light);
+            color: var(--text-muted);
+            line-height: 1.8;
+            font-weight: 500;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Header */
+        header {
+            background: var(--bg-white);
+            padding: 1rem 0; /* Reduced height */
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .logo-placeholder {
+            width: 90px; /* Larger logo */
+            height: 90px;
+            margin-right: 1.5rem;
+            background: var(--border);
+            border-radius: 50%;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .logo-placeholder:hover {
+            transform: scale(1.05);
+        }
+
+        .header-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        h1 {
+            font-size: 2rem; /* Slightly smaller to fit inline */
+            font-weight: 700;
+            color: var(--text-dark);
+            line-height: 1.2;
+            margin: 0;
+        }
+
+        .date {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: 0.25rem;
+        }
+
+        /* Main */
+        main {
+            background: var(--bg-white);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            margin: 2rem 0;
+            padding: 2rem 0;
+        }
+
+        .section {
+            padding: 0 2rem 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        h2 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.25rem;
+        }
+
+        h3 {
+            font-size: 1.375rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin: 1.5rem 0 1rem;
+        }
+
+        p {
+            font-size: 1.05rem;
+            margin-bottom: 1rem;
+            max-width: 65ch;
+        }
+
+        ul {
+            padding-left: 1.75rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            font-size: 1.05rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        li:before {
+            content: "▹";
+            color: var(--primary);
+            position: absolute;
+            left: -1.25rem;
+            font-size: 1.2rem;
+        }
+
+        /* Icons */
+        .icon {
+            width: 1.5rem;
+            height: 1.5rem;
+            margin-right: 0.75rem;
+            color: var(--primary);
+            flex-shrink: 0;
+            transition: transform 0.2s ease;
+        }
+
+        h2:hover .icon {
+            transform: translateX(4px);
+        }
+
+        /* Footer */
+        footer {
+            padding: 1.5rem 0;
+            text-align: center;
+            background: var(--bg-white);
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.03);
+        }
+
+        footer p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        footer a {
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        footer a:hover {
+            color: #2b6cb0;
+        }
+
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+            }
+
+            .logo-placeholder {
+                width: 70px;
+                height: 70px;
+                margin-right: 1rem;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            h2 {
+                font-size: 1.625rem;
+            }
+
+            h3 {
+                font-size: 1.25rem;
+            }
+
+            p, li {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .logo-placeholder {
+                width: 60px;
+                height: 60px;
+                margin: 0 auto 0.5rem;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.375rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .section {
+                padding: 0 1rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content fade-in">
+                <div class="logo-placeholder">
+                    <img src="your-logo.png" alt="Logo" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                </div>
+                <div class="header-text">
+                    <h1>RV University Lost & Found Application</h1>
+                    <p class="date">Effective Date: April 03, 2025</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section fade-in">
+            <h2>
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                </svg>
+                Terms and Conditions
+            </h2>
+            <p>Welcome to the RV University Lost & Found Application ("App"). By accessing or using the App, you agree to comply with and be bound by these Terms and Conditions ("Terms"). Please review them carefully.</p>
+            <h3>1. Introduction</h3>
+            <p>The Lost & Found App is designed to assist the RV University community in reporting and recovering lost items on campus. This platform provides a secure, organized, and efficient system for managing lost and found objects, featuring real-time updates, a user-friendly interface, and secure data handling.</p>
+            <h3>2. User Eligibility</h3>
+            <ul>
+                <li>The App is exclusively for RV University students, faculty, staff, and authorized personnel.</li>
+                <li>Users must be at least 13 years of age to register and use the App.</li>
+                <li>Registration requires verification of RV University affiliation (e.g., a valid university email address).</li>
+                <li>Users under 18 must have parental or guardian consent to use the App, in compliance with applicable laws.</li>
+            </ul>
+            <h3>3. Account Registration and Security</h3>
+            <ul>
+                <li>Users must provide accurate information during registration, including name, university ID, and contact details.</li>
+                <li>You are responsible for maintaining the confidentiality of your account credentials (username and password).</li>
+                <li>Notify the support team immediately if you suspect unauthorized access to your account.</li>
+                <li>RV University is not liable for any loss or damage resulting from your failure to safeguard your account.</li>
+            </ul>
+            <h3>4. User Responsibilities</h3>
+            <ul>
+                <li>Accurate Reporting: Users must provide truthful and detailed information when reporting lost or found items, including descriptions, categories, and images.</li>
+                <li>Timely Updates: If an item is claimed or no longer relevant, users must update the status in the App to keep the database accurate.</li>
+                <li>Respectful Conduct: Users must interact respectfully with others, including administrators and other users, during the claim or reporting process.</li>
+                <li>Compliance with Laws: Users must comply with all applicable local, state, and national laws while using the App.</li>
+            </ul>
+            <h3>5. Item Reporting and Verification Process</h3>
+            <ul>
+                <li>Reporting Process: Users can report lost or found items by uploading a description, category, and image through the 'Report an Item' section.</li>
+                <li>Verification for Claims: To claim an item, users must provide sufficient proof of ownership, such as receipts, serial numbers, or photos showing ownership.</li>
+                <li>Administrator Role: App administrators will review claims and may request additional information to verify ownership.</li>
+                <li>Retention Period: Found items reported to the App will be stored in the database for 90 days. Unclaimed items may be disposed of or donated as per RV University policies.</li>
+            </ul>
+            <h3>6. Prohibited Items and Activities</h3>
+            <p style="font-weight: 600;">Prohibited Items:</p>
+            <ul>
+                <li>Illegal items (e.g., drugs, weapons, stolen goods).</li>
+                <li>Hazardous materials (e.g., flammable substances, chemicals).</li>
+                <li>Perishable items (e.g., food, beverages).</li>
+            </ul>
+            <p style="font-weight: 600; margin-top: 0.75rem;">Prohibited Activities:</p>
+            <ul>
+                <li>Posting false or misleading reports.</li>
+                <li>Using the App for commercial purposes (e.g., selling items).</li>
+                <li>Engaging in harassment, bullying, or discriminatory behavior.</li>
+            </ul>
+            <p style="margin-top: 0.75rem;">Violation of these rules may result in account suspension, termination, or referral to university authorities.</p>
+            <h3>7. Data Usage and Ownership</h3>
+            <ul>
+                <li>The App collects user data (e.g., name, contact details, item descriptions) solely to facilitate lost and found services.</li>
+                <li>Users retain ownership of the content they upload (e.g., item images, descriptions), but grant RV University a non-exclusive, royalty-free license to use, store, and display this content for App functionality.</li>
+                <li>User data will not be shared with third parties without consent, except as required by law or university policy.</li>
+            </ul>
+            <h3>8. False Claims and Misuse</h3>
+            <ul>
+                <li>Submitting fraudulent claims (e.g., claiming an item that does not belong to you) is strictly prohibited.</li>
+                <li>Misuse of the platform, such as spamming, posting inappropriate content, or attempting to hack the system, will result in immediate account suspension.</li>
+                <li>Repeated violations may lead to permanent account termination and potential disciplinary action by RV University.</li>
+            </ul>
+        </section>
+
+        <section class="section fade-in">
+            <h2>
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+                Privacy Policy
+            </h2>
+            <p>RV University is committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, store, and protect your data when you use the Lost & Found App.</p>
+            <h3>1. Data Collection</h3>
+            <ul>
+                <li>Registration Data: To use the App, users must provide their name, RV University email address, contact number, and university ID for verification.</li>
+                <li>Item Data: Users upload descriptions, categories, and images of lost or found items, which are stored in the App's database.</li>
+                <li>Usage Data: The App logs timestamps of actions (e.g., item reports, claims) and user interactions for security and auditing purposes.</li>
+                <li>Optional Data: Users may choose to provide additional information, such as notification preferences or event check-in details.</li>
+            </ul>
+            <h3>2. Purpose of Data Collection</h3>
+            <ul>
+                <li>Service Delivery: To facilitate the reporting, searching, and claiming of lost and found items.</li>
+                <li>User Verification: To ensure only authorized RV University members can access the App.</li>
+                <li>Notifications: To send real-time updates and alerts about item matches or claim statuses.</li>
+                <li>Analytics: To improve App functionality and user experience through usage analytics.</li>
+            </ul>
+            <h3>3. Data Protection Measures</h3>
+            <ul>
+                <li>All user data is encrypted during transmission and storage using industry-standard protocols (e.g., SSL/TLS encryption).</li>
+                <li>Access to sensitive data is restricted to authorized personnel, such as App administrators, who are bound by confidentiality agreements.</li>
+                <li>The App undergoes regular security audits to identify and mitigate potential vulnerabilities.</li>
+                <li>SQLite databases are hosted on secure servers with restricted access.</li>
+            </ul>
+            <h3>4. Third-Party Services and Integrations</h3>
+            <ul>
+                <li>The App does not sell, rent, or share personal user data with third parties for commercial purposes.</li>
+                <li>Third-party integrations (e.g., Excel sheet uploads for event check-ins) are used solely for App functionality and are not controlled by RV University.</li>
+                <li>If third-party services are used, their privacy policies will apply, and users will be informed of any data-sharing requirements.</li>
+            </ul>
+        </section>
+
+        <section class="section fade-in">
+            <h2>
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M12 8v4"></path>
+                    <path d="M12 16h.01"></path>
+                </svg>
+                Additional Policies
+            </h2>
+            <h3>1. Accessibility Policy</h3>
+            <ul>
+                <li>The App is designed to be accessible to all users, including those with disabilities, in compliance with WCAG 2.1 guidelines.</li>
+                <li>Features include text-to-speech support, high-contrast mode, and adjustable font sizes.</li>
+                <li>Users can report accessibility issues through the support system for prompt resolution.</li>
+            </ul>
+            <h3>2. Content Moderation Policy</h3>
+            <ul>
+                <li>All user-uploaded content (e.g., item descriptions, images) is subject to moderation by App administrators.</li>
+                <li>Content that violates these Terms (e.g., offensive language, inappropriate images) will be removed, and the user may face account suspension.</li>
+                <li>Users can appeal moderation decisions by contacting the support team within 7 days of the action.</li>
+            </ul>
+            <h3>3. Event Check-In Policy</h3>
+            <ul>
+                <li>Event organizers using the check-in feature must ensure that uploaded Excel sheets comply with data protection laws.</li>
+                <li>RV University is not responsible for errors in event data or misuse of attendee information by organizers.</li>
+                <li>Attendees can opt out of event tracking by contacting the event organizer or App support.</li>
+            </ul>
+            <h3>4. Notification Policy</h3>
+            <ul>
+                <li>Users will receive notifications for critical updates (e.g., item matches, claim approvals) by default.</li>
+                <li>Non-critical notifications (e.g., App updates, reminders) can be disabled in the settings.</li>
+                <li>RV University is not liable for missed notifications due to user settings, device issues, or network failures.</li>
+            </ul>
+            <h3>5. Backup and Recovery Policy</h3>
+            <ul>
+                <li>The App's database is backed up daily to prevent data loss in case of server failures.</li>
+                <li>In the event of data loss, RV University will attempt to restore the most recent backup but does not guarantee full recovery.</li>
+                <li>Users are encouraged to keep personal records of important item details as a precaution.</li>
+            </ul>
+        </section>
+
+        <section class="section fade-in">
+            <h2>
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l5 5v11a2 2 0 0 1-2 2z"></path>
+                </svg>
+                Product Backlog
+            </h2>
+            <p>The Lost & Found App is a dedicated platform for RV University to manage lost and found items efficiently. This product backlog outlines the current features, planned enhancements, and long-term goals.</p>
+            <h3>Current Features</h3>
+            <ul>
+                <li>User Registration & Authentication: Secure login using RV University email and password.</li>
+                <li>Item Reporting: Users can report lost or found items with descriptions and images.</li>
+                <li>Real-Time Search: Search items using keywords, categories, or filters.</li>
+                <li>Check-In Feature: Event organizers can upload Excel sheets to track attendees.</li>
+                <li>Notifications & Alerts: Push notifications and email alerts for item updates.</li>
+                <li>Database Storage: Secure SQLite storage for all lost and found data.</li>
+                <li>User-Friendly Interface: Clean, intuitive UI for all users.</li>
+                <li>Moderation & Reporting System: Users can flag suspicious activities or inappropriate content.</li>
+            </ul>
+            <h3>Planned Enhancements</h3>
+            <ul>
+                <li>AI-Based Image Matching: Machine learning for automatic item matching.</li>
+                <li>Advanced Filtering and Sorting: Enhanced options for item discovery.</li>
+                <li>Multi-Language Support: Support for additional languages.</li>
+                <li>University ID Integration: Seamless authentication with university systems.</li>
+                <li>Mobile App Optimization: Offline capabilities for Android app.</li>
+                <li>Cross-Platform Support: iOS version and web interface development.</li>
+                <li>Analytics Dashboard: Track usage and engagement metrics.</li>
+                <li>Integration with Campus Systems: Connect with library and security systems.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container fade-in">
+            <p>For support, contact us at <a href="mailto:adevadiga2005@gmail.com">adevadiga2005@gmail.com</a></p>
+            <p>© 2025 RV University. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
