@@ -10,7 +10,7 @@ if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
 
 export default {
   expo: {
-    name: "Lost and Found",
+    name: "Lost&Found",
     slug: "Lost-and-Found",
     version: "1.0.0",
     orientation: "portrait",
@@ -45,8 +45,10 @@ export default {
       supabaseUrl: SUPABASE_URL,
       supabaseAnonKey: SUPABASE_ANON_KEY,
       eas: {
-        projectId: "bdf2902b-6696-4ba3-bb0f-061c5b9daed3"  // 🔥 Add this line
+        "projectId": "bdf2902b-6696-4ba3-bb0f-061c5b9daed3"
       }
-    }
+    },
+    owner: "devadigaakshay04",
+    slug: "bolt-expo-nativewind"
   }
 };

@@ -92,11 +92,11 @@ export default function AuthScreen() {
       Alert.alert('Error', 'Please enter a valid RVU email address');
       return;
     }
-
+  
     setLoading(true);
     try {
       const response = await fetch(
-        'https://otp-service-beta.vercel.app/api/otp/generate',
+        'https://otp-service-and-feedback-using-sq-lite.vercel.app/api/otp/generate',
         {
           method: 'POST',
           headers: {
@@ -110,9 +110,9 @@ export default function AuthScreen() {
           }),
         }
       );
-
+  
       if (!response.ok) throw new Error('Failed to send OTP');
-
+  
       setOtpSent(true);
       setResendDisabled(true);
       Alert.alert('Success', 'OTP has been sent to your email');
@@ -122,17 +122,17 @@ export default function AuthScreen() {
       setLoading(false);
     }
   };
-
+  
   const handleVerifyOTP = async () => {
     if (!otp) {
       Alert.alert('Error', 'Please enter the OTP');
       return;
     }
-
+  
     setLoading(true);
     try {
       const response = await fetch(
-        'https://otp-service-beta.vercel.app/api/otp/verify',
+        'https://otp-service-and-feedback-using-sq-lite.vercel.app/api/otp/verify',
         {
           method: 'POST',
           headers: {
@@ -144,9 +144,9 @@ export default function AuthScreen() {
           }),
         }
       );
-
+  
       if (!response.ok) throw new Error('Invalid OTP');
-
+  
       setOtpVerified(true);
       Alert.alert('Success', 'Email verified successfully');
     } catch (error) {
@@ -154,7 +154,7 @@ export default function AuthScreen() {
     } finally {
       setLoading(false);
     }
-  };
+  };  
 
   const handleAuth = async () => {
     if (!email || !password) {
